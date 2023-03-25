@@ -4,5 +4,6 @@ module.exports = defineConfig({
   publicPath: process.env.NODE_ENV === 'production' 
   ? '/TestCaseValera/'
   : '/',
-  outputDir: 'docs'
+  outputDir: 'docs',
+
 })
