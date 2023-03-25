@@ -34,16 +34,19 @@ export const useTimerStore = defineStore("timer", () => {
 	}
 
 	const getLocalTime = () => {
-		let localTime = 0
-		if (!isLocalStoreError.value) {
-			localTime = window.localStorage[lsKey]
-		}
+		if (isLocalStoreError.value) return
+
+		const localTime = JSON.parse(window.localStorage.getItem(lsKey) ?? "0")
+		console.log(localTime)
+		console.log(time.value)
 		time.value = localTime
 	}
 
 	const setLocalTime = () => {
 		if (!isLocalStoreError.value) {
-			window.localStorage[lsKey] = time.value
+			console.log(JSON.stringify(time.value))
+			console.log(time.value)
+			window.localStorage.setItem(lsKey, JSON.stringify(time.value))
 		}
 	}
 
