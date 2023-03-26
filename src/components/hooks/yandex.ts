@@ -15,7 +15,7 @@ export default function useYandex(options: YandexType) {
 
 		const map = new ymaps3.YMap(el as HTMLElement, {
 			location: {
-				center: [66.08308214579333, 76.66800609527584],
+				center: coordinate as LngLat,
 				zoom: zoom,
 			},
 		})
@@ -29,7 +29,7 @@ export default function useYandex(options: YandexType) {
 		)
 		map.addChild(
 			new YMapDefaultMarker({
-				coordinates: [66.08308214579333, 76.66800609527584],
+				coordinates: markerCoordinate as LngLat,
 			})
 		)
 	}
