@@ -11,7 +11,7 @@ export default function useYandex(options: YandexType) {
 			}
 
 			const script = document.createElement("script")
-			script.src = `https://api-maps.yandex.ru//?apikey=${process.env.VUE_APP_YANDEX_KEY}&lang=ru_RU`
+			script.src = `https://api-maps.yandex.ru/3.0/?apikey=${process.env.VUE_APP_YANDEX_KEY}&lang=ru_RU`
 			script.onload = () => resolve
 
 			document.body.appendChild(script)
