@@ -1,43 +1,47 @@
-<!doctype html><html lang=""><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/TestCaseValera/favicon.ico"/><title>test-case-valera</title><script src="https://api-maps.yandex.ru/3.0/?apikey=db561627-0b5b-48e1-a8cb-39f6e67bee04&lang=ru_RU"></script><script>var map = null
-
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<link rel="icon" href="/TestCaseValera/favicon.ico" />
+		<title>test-case-valera</title>
+		<script src="https://api-maps.yandex.ru/3.0/?apikey=db561627-0b5b-48e1-a8cb-39f6e67bee04&lang=ru_RU"></script>
+		<script>
 			main()
+
 			async function main() {
+				// Промис `ymaps3.ready` будет зарезолвлен, когда
+				// загрузятся все компоненты API.
 				await ymaps3.ready
-				const {
-					YMap,
-					YMapDefaultSchemeLayer,
-					YMapControls,
-					YMapListener,
-				} = ymaps3
-
-				const { YMapGeolocationControl } = await ymaps3.import(
-					"@yandex/ymaps3-controls@0.0.1"
-				)
-				const controls = new YMapControls({ position: "right" })
-				const geolocationControl = new YMapGeolocationControl()
-				controls.addChild(geolocationControl)
-
-				map = new YMap(
-					document.getElementById("app"),
+				// Создание карты.
+				const map = new ymaps3.YMap(
+					document.getElementById('map-container"'),
 					{
-						behaviors: [
-							"drag",
-							"mouseRotate",
-							"mouseTilt",
-							"magnifier",
-							"pinchRotate",
-							"panTilt",
-						],
-						location: LOCATION,
-					},
-					[
-						new YMapDefaultSchemeLayer(),
-						controls,
-						new YMapListener({
-							onUpdate(object) {
-								console.log("update", object)
-							},
-						}),
-					]
+						location: {
+							// Координаты центра карты.
+							// Порядок по умолчанию: «долгота, широта».
+							center: [37.64, 55.76],
+
+							// Уровень масштабирования. Допустимые значения:
+							// от 0 (весь мир) до 19.
+							zoom: 7,
+						},
+					}
 				)
-			}</script><script defer="defer" src="/TestCaseValera/js/chunk-vendors.499e9505.js"></script><script defer="defer" src="/TestCaseValera/js/app.a7d1ef6f.js"></script><link href="/TestCaseValera/css/app.037c656e.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but test-case-valera doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="map" style="width: 600px; height: 400px"></div><div id="app"></div></body></html>
+
+				map.addChild(new ymaps3.YMapDefaultSchemeLayer())
+			}
+		</script>
+	</head>
+	<body>
+		<noscript
+			><strong
+				>We're sorry but test-case-valera doesn't work properly without
+				JavaScript enabled. Please enable it to continue.</strong
+			></noscript
+		>
+		<div id="map" style="width: 600px; height: 400px"></div>
+		<div id="app"></div>
+	</body>
+</html>
