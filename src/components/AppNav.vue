@@ -5,10 +5,10 @@
 		>
 			<div class="font-bold">Тестовое задание</div>
 			<ul class="flex flex-row space-x-2">
-				<li><RouterLink to="/" class="btn">Home</RouterLink></li>
-				<li><RouterLink to="/map" class="btn">Map</RouterLink></li>
+				<li><RouterLink to="/" class="btn">О себе</RouterLink></li>
+				<li><RouterLink to="/map" class="btn">Карта</RouterLink></li>
 				<li>
-					<RouterLink to="/timer-page" class="btn">Timer</RouterLink>
+					<RouterLink to="/timer-page" class="btn">Таймер</RouterLink>
 				</li>
 			</ul>
 		</nav>

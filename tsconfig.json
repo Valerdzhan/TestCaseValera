@@ -14,18 +14,21 @@
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "webpack-env"
+      "webpack-env",
     ],
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
     },
     "lib": [
       "esnext",
       "dom",
       "dom.iterable",
       "scripthost"
+    ],
+    "typeRoots": [
+      "./node_modules/@yandex/ymaps3-types",
     ]
   },
   "include": [
@@ -37,5 +40,6 @@
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  
 }

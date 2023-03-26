@@ -1,7 +1,7 @@
 <template>
 	<div class="px-4 py-2 border">
 		<label class="text-sm text-gray-500 font-light">{{ label }}</label>
-		<div class="">
+		<div class="whitespace-pre">
 			{{ text }}
 		</div>
 	</div>
