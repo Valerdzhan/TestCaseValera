@@ -1,24 +1,55 @@
 <template>
 	<div>
-		<div id="yamaps" ref="yamaps" style="width: 400xp; height: 400px"></div>
+		<div id="yamaps" ref="yamaps" :style="style"></div>
 	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue"
+import { defineComponent, ref, onMounted, PropType, computed } from "vue"
 import useYandex from "./hooks/yandex"
-import { refType, YandexType } from "@/types/yandexType"
+import { refType, YandexType, YandexCoordinate } from "@/types/yandexType"
 
 export default defineComponent({
-	setup() {
+	props: {
+		coordinate: {
+			type: Object as PropType<YandexCoordinate>,
+			required: true,
+		},
+		markerCoordinate: {
+			type: Object as PropType<YandexCoordinate>,
+			required: true,
+		},
+		zoom: {
+			type: Number,
+			default: 10,
+		},
+		width: {
+			type: Number,
+			default: 400,
+		},
+		height: {
+			type: Number,
+			default: 600,
+		},
+	},
+	setup(props) {
+		const { coordinate, markerCoordinate, zoom, width, height } =
+			ref(props).value
 		const yamaps = ref<refType>(null)
+
+		const style = computed(() => {
+			return {
+				width: `${width}px`,
+				height: `${height}px`,
+			}
+		})
 
 		const init = async () => {
 			const options: YandexType = {
 				el: yamaps.value,
-				coordinate: [76.67697540222169, 66.08869000789291],
-				zoom: 13,
-				markerCoordinate: [76.67697540222169, 66.08869000789291],
+				coordinate: coordinate,
+				zoom: zoom,
+				markerCoordinate: markerCoordinate,
 			}
 
 			const { initYandexMap } = useYandex(options)
@@ -28,7 +59,7 @@ export default defineComponent({
 
 		onMounted(init)
 
-		return { yamaps }
+		return { yamaps, style }
 	},
 })
 </script>
