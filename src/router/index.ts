@@ -20,7 +20,7 @@ const routes: Array<RouteRecordRaw> = [
 		path: "/timer-page",
 		name: "timer-page",
 		component: () =>
-			import(/* webpackChunkName: "about" */ "../views/TimerPage.vue"),
+			import(/* webpackChunkName: "timer" */ "../views/TimerPage.vue"),
 	},
 ]
 
