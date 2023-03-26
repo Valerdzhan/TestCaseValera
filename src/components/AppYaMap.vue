@@ -24,8 +24,8 @@ export default defineComponent({
 			default: 10,
 		},
 		width: {
-			type: Number,
-			default: 400,
+			type: [Number, String],
+			default: "auto",
 		},
 		height: {
 			type: Number,
@@ -39,7 +39,7 @@ export default defineComponent({
 
 		const style = computed(() => {
 			return {
-				width: `${width}px`,
+				width: typeof width === "string" ? width : `${width}px`,
 				height: `${height}px`,
 			}
 		})
