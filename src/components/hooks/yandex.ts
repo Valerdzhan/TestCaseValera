@@ -3,7 +3,7 @@ import type { LngLat } from "@yandex/ymaps3-types"
 import { onMounted } from "vue"
 
 export default function useYandex(options: YandexType) {
-	const { el, coordinate } = options
+	const { el, coordinate, zoom } = options
 
 	const init = async () =>
 		new Promise((resolve) => {
@@ -30,7 +30,7 @@ export default function useYandex(options: YandexType) {
 		new ymaps3.YMap(ydiv, {
 			location: {
 				center: coordinate as LngLat,
-				zoom: 10,
+				zoom: zoom,
 			},
 		})
 	}

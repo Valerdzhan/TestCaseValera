@@ -16,7 +16,8 @@ export default defineComponent({
 		const initMap = () => {
 			const options: YandexType = {
 				el: yamaps.value,
-				coordinate: [55, 35],
+				coordinate: [66.084539, 76.680956],
+				zoom: 12,
 			}
 			useYandex(options)
 		}
