@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div id="yamaps" ref="yamaps"></div>
+		<div id="yamaps" ref="yamaps" style="width: 400xp; height: 400px"></div>
 	</div>
 </template>
 
