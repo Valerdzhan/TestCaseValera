@@ -7,51 +7,6 @@
 		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 		<title><%= htmlWebpackPlugin.options.title %></title>
 		<script src="https://api-maps.yandex.ru/3.0/?apikey=<%= process.env.VUE_APP_YANDEX_KEY %>&lang=ru_RU"></script>
-		<script>
-			var map = null
-
-			main()
-			async function main() {
-				await ymaps3.ready
-				const {
-					YMap,
-					YMapDefaultSchemeLayer,
-					YMapControls,
-					YMapListener,
-				} = ymaps3
-
-				const { YMapGeolocationControl } = await ymaps3.import(
-					"@yandex/ymaps3-controls@0.0.1"
-				)
-				const controls = new YMapControls({ position: "right" })
-				const geolocationControl = new YMapGeolocationControl()
-				controls.addChild(geolocationControl)
-
-				map = new YMap(
-					document.getElementById("app"),
-					{
-						behaviors: [
-							"drag",
-							"mouseRotate",
-							"mouseTilt",
-							"magnifier",
-							"pinchRotate",
-							"panTilt",
-						],
-						location: LOCATION,
-					},
-					[
-						new YMapDefaultSchemeLayer(),
-						controls,
-						new YMapListener({
-							onUpdate(object) {
-								console.log("update", object)
-							},
-						}),
-					]
-				)
-			}
-		</script>
 	</head>
 	<body>
 		<noscript>
