@@ -20,7 +20,7 @@ export default function useYandex(options: YandexType) {
 			},
 		})
 
-		map.addChild(new ymaps3.YMapDefaultSchemeLayer({ theme: "dark" }))
+		map.addChild(new ymaps3.YMapDefaultSchemeLayer({}))
 		map.addChild(new ymaps3.YMapDefaultFeaturesLayer({}))
 		map.addChild(
 			new ymaps3.YMapControls({ position: "right" })
