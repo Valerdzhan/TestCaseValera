@@ -7,6 +7,17 @@
 		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 		<title><%= htmlWebpackPlugin.options.title %></title>
 		<script src="https://api-maps.yandex.ru/3.0/?apikey=<%= process.env.VUE_APP_YANDEX_KEY %>&lang=ru_RU"></script>
+		<script>
+			ymaps3.ready.then(init)
+			function init() {
+				const map = new ymaps3.YMap(document.getElementById("map"), {
+					location: {
+						center: [37.64, 55.76],
+						zoom: 7,
+					},
+				})
+			}
+		</script>
 	</head>
 	<body>
 		<noscript>
@@ -16,7 +27,7 @@
 				continue.</strong
 			>
 		</noscript>
-		<div id="root"></div>
+		<div id="map" style="width: 600px; height: 400px"></div>
 		<div id="app"></div>
 		<!-- built files will be auto injected -->
 	</body>
