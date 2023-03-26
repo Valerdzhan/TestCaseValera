@@ -26,12 +26,15 @@ export default function useYandex(options: YandexType) {
 
 		el?.appendChild(ydiv)
 
-		const map = new ymaps3.YMap(ydiv as HTMLElement, {
-			location: {
-				center: coordinate as LngLat,
-				zoom: zoom,
-			},
-		})
+		const map = new ymaps3.YMap(
+			document.getElementById("root") as HTMLElement,
+			{
+				location: {
+					center: [35, 55] as LngLat,
+					zoom: 12,
+				},
+			}
+		)
 	}
 
 	return { setYMap }
