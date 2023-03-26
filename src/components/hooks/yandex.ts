@@ -20,18 +20,18 @@ export default function useYandex(options: YandexType) {
 			},
 		})
 
-		map.addChild(new ymaps3.YMapDefaultSchemeLayer({ theme: "dark" })),
-			map.addChild(new ymaps3.YMapDefaultFeaturesLayer({})),
-			map.addChild(
-				new ymaps3.YMapControls({ position: "right" })
-					.addChild(new YMapZoomControl({}))
-					.addChild(new YMapGeolocationControl({}))
-			),
-			map.addChild(
-				new YMapDefaultMarker({
-					coordinates: [66.08308214579333, 76.66800609527584],
-				})
-			)
+		map.addChild(new ymaps3.YMapDefaultSchemeLayer({ theme: "dark" }))
+		map.addChild(new ymaps3.YMapDefaultFeaturesLayer({}))
+		map.addChild(
+			new ymaps3.YMapControls({ position: "right" })
+				.addChild(new YMapZoomControl({}))
+				.addChild(new YMapGeolocationControl({}))
+		)
+		map.addChild(
+			new YMapDefaultMarker({
+				coordinates: [66.08308214579333, 76.66800609527584],
+			})
+		)
 	}
 
 	return { initYandexMap }
