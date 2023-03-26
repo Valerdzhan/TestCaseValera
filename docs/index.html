@@ -8,32 +8,33 @@
 		<title>test-case-valera</title>
 		<script src="https://api-maps.yandex.ru/3.0/?apikey=db561627-0b5b-48e1-a8cb-39f6e67bee04&lang=ru_RU"></script>
 		<script>
-			main()
-
-			async function main() {
-				// Промис `ymaps3.ready` будет зарезолвлен, когда
-				// загрузятся все компоненты API.
-				await ymaps3.ready
-				// Создание карты.
-				const map = new ymaps3.YMap(
-					document.getElementById('map"'),
-					{
-						location: {
-							// Координаты центра карты.
-							// Порядок по умолчанию: «долгота, широта».
-							center: [37.64, 55.76],
-
-							// Уровень масштабирования. Допустимые значения:
-							// от 0 (весь мир) до 19.
-							zoom: 7,
-						}
-					},
-						[
-						new ymaps3.YMapDefaultSchemeLayer()
-						]
-				)
-
-			}
+			!(function () {
+				{
+					Promise.all([
+						ymaps3.ready,
+						ymaps3.import("@yandex/ymaps3-controls@0.0.1"),
+						ymaps3.import("@yandex/ymaps3-markers@0.0.1"),
+					]).then(([a, e, o]) => {
+						var t = new a.YMap(document.getElementById("map_pl"), {
+							location: { center: [37.588215, 55.74], zoom: 11 },
+						})
+						t.addChild(new a.YMapDefaultSchemeLayer()),
+							t.addChild(new a.YMapDefaultFeaturesLayer()),
+							t.addChild(
+								new a.YMapControls({ position: "right" })
+									.addChild(new e.YMapZoomControl())
+									.addChild(new e.YMapGeolocationControl())
+							),
+							t.addChild(
+								new o.YMapDefaultMarker({
+									coordinates: [
+										37.58821507608095, 55.7339375178253,
+									],
+								})
+							)
+					})
+				}
+			})()
 		</script>
 	</head>
 	<body>
@@ -43,7 +44,7 @@
 				JavaScript enabled. Please enable it to continue.</strong
 			></noscript
 		>
-		<div id="map" style="width: 600px; height: 400px"></div>
+		<div id="map_pl" style="width: 600px; height: 400px"></div>
 		<div id="app"></div>
 	</body>
 </html>
