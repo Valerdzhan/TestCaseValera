@@ -1,6 +1,5 @@
 import { YandexType } from "@/types/yandexType"
 import type { LngLat } from "@yandex/ymaps3-types"
-import { onMounted } from "vue"
 
 export default function useYandex(options: YandexType) {
 	const { el, coordinate, zoom } = options
@@ -13,21 +12,21 @@ export default function useYandex(options: YandexType) {
 
 			const script = document.createElement("script")
 			script.src = `https://api-maps.yandex.ru/3.0/?apikey=${process.env.VUE_APP_YANDEX_KEY}&lang=ru_RU`
-			script.onload = resolve
+			script.onload = () => resolve
 
-			el?.appendChild(script)
-		}).then(() => {
-			setYMap()
+			document.body.appendChild(script)
 		})
 
-	const setYMap = () => {
-		const ydiv: HTMLElement = document.createElement("div")
-		ydiv.style.width = "400px"
-		ydiv.style.height = "400px"
+	const setYMap = async () => {
+		await init()
 
-		el?.appendChild(ydiv)
+		// const ydiv: HTMLElement = document.createElement("div")
+		// ydiv.style.width = "400px"
+		// ydiv.style.height = "400px"
 
-		new ymaps3.YMap(ydiv, {
+		// el?.appendChild(ydiv)
+
+		const map = new ymaps3.YMap(el as HTMLElement, {
 			location: {
 				center: coordinate as LngLat,
 				zoom: zoom,
@@ -35,7 +34,5 @@ export default function useYandex(options: YandexType) {
 		})
 	}
 
-	init()
-
-	return {}
+	return { setYMap }
 }

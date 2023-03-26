@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div ref="yamaps"></div>
+		<div id="yamaps" ref="yamaps"></div>
 	</div>
 </template>
 
@@ -13,16 +13,18 @@ export default defineComponent({
 	setup() {
 		const yamaps = ref<refType>(null)
 
-		const initMap = () => {
+		const init = async () => {
 			const options: YandexType = {
 				el: yamaps.value,
 				coordinate: [66.084539, 76.680956],
 				zoom: 12,
 			}
-			useYandex(options)
+			const { setYMap } = useYandex(options)
+
+			await setYMap()
 		}
 
-		onMounted(initMap)
+		onMounted(init)
 
 		return { yamaps }
 	},

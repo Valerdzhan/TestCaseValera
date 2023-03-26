@@ -15,12 +15,11 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "@yandex/ymaps3-types"
     ],
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
     },
     "lib": [
       "esnext",
