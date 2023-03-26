@@ -23,15 +23,15 @@ export default function useYandex(options: YandexType) {
 		// ydiv.style.width = "400px"
 		// ydiv.style.height = "400px"
 		// el?.appendChild(ydiv)
-		// const map = new ymaps3.YMap(
-		// 	document.getElementById("YMapsID") as HTMLElement,
-		// 	{
-		// 		location: {
-		// 			center: [35, 55] as LngLat,
-		// 			zoom: 12,
-		// 		},
-		// 	}
-		// )
+		const map = new ymaps3.YMap(
+			document.getElementById("YMapsID") as HTMLElement,
+			{
+				location: {
+					center: [35, 55] as LngLat,
+					zoom: 12,
+				},
+			}
+		)
 	}
 
 	return { setYMap }

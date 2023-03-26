@@ -10,13 +10,27 @@
 		<script>
 			ymaps3.ready.then(init)
 			function init() {
-				const map = new ymaps3.YMap(document.getElementById("map"), {
-					location: {
-						center: [37.64, 55.76],
-						zoom: 7,
-					},
+				// const map = new ymaps3.YMap(document.getElementById("map"), {
+				// 	location: {
+				// 		center: [37.64, 55.76],
+				// 		zoom: 7,
+
+				// 	},
+				// })
+				const map = new YMap(document.getElementById("map"), {
+					location: { center: [37.622504, 55.753215], zoom: 10 },
 				})
-				map.addChild(new YMapDefaultSchemeLayer({ theme: "dark" }))
+				// add default Yandex scheme layer
+				map.addChild(new YMapDefaultSchemeLayer())
+				// relocate map to another point with animation in 200 milliseconds
+				map.setLocation({
+					center: [48.707067, 44.516975],
+					duration: 200,
+				})
+				// change mode from default `auto` to `raster`
+				map.setMode("raster")
+				// get map zoom for some calculations
+				const zoom = map.zoom
 			}
 		</script>
 	</head>
