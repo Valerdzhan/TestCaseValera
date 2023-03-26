@@ -1,24 +1,43 @@
-<!doctype html><html lang=""><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/TestCaseValera/favicon.ico"/><title>test-case-valera</title><script src="https://api-maps.yandex.ru/3.0/?apikey=db561627-0b5b-48e1-a8cb-39f6e67bee04&lang=ru_RU"></script><script>ymaps3.ready.then(init)
-			function init() {
-				// const map = new ymaps3.YMap(document.getElementById("map"), {
-				// 	location: {
-				// 		center: [37.64, 55.76],
-				// 		zoom: 7,
+<!doctype html><html lang=""><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="icon" href="/TestCaseValera/favicon.ico"/><title>test-case-valera</title><script src="https://api-maps.yandex.ru/3.0/?apikey=db561627-0b5b-48e1-a8cb-39f6e67bee04&lang=ru_RU"></script><script>var map = null
 
-				// 	},
-				// })
-				const map = new YMap(document.getElementById("map"), {
-					location: { center: [37.622504, 55.753215], zoom: 10 },
-				})
-				// add default Yandex scheme layer
-				map.addChild(new YMapDefaultSchemeLayer())
-				// relocate map to another point with animation in 200 milliseconds
-				map.setLocation({
-					center: [48.707067, 44.516975],
-					duration: 200,
-				})
-				// change mode from default `auto` to `raster`
-				map.setMode("raster")
-				// get map zoom for some calculations
-				const zoom = map.zoom
-			}</script><script defer="defer" src="/TestCaseValera/js/chunk-vendors.499e9505.js"></script><script defer="defer" src="/TestCaseValera/js/app.dbe70568.js"></script><link href="/TestCaseValera/css/app.037c656e.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but test-case-valera doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="map" style="width: 600px; height: 400px"></div><div id="app"></div></body></html>
+			main()
+			async function main() {
+				await ymaps3.ready
+				const {
+					YMap,
+					YMapDefaultSchemeLayer,
+					YMapControls,
+					YMapListener,
+				} = ymaps3
+
+				const { YMapGeolocationControl } = await ymaps3.import(
+					"@yandex/ymaps3-controls@0.0.1"
+				)
+				const controls = new YMapControls({ position: "right" })
+				const geolocationControl = new YMapGeolocationControl()
+				controls.addChild(geolocationControl)
+
+				map = new YMap(
+					document.getElementById("app"),
+					{
+						behaviors: [
+							"drag",
+							"mouseRotate",
+							"mouseTilt",
+							"magnifier",
+							"pinchRotate",
+							"panTilt",
+						],
+						location: LOCATION,
+					},
+					[
+						new YMapDefaultSchemeLayer(),
+						controls,
+						new YMapListener({
+							onUpdate(object) {
+								console.log("update", object)
+							},
+						}),
+					]
+				)
+			}</script><script defer="defer" src="/TestCaseValera/js/chunk-vendors.499e9505.js"></script><script defer="defer" src="/TestCaseValera/js/app.a7d1ef6f.js"></script><link href="/TestCaseValera/css/app.037c656e.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but test-case-valera doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="map" style="width: 600px; height: 400px"></div><div id="app"></div></body></html>
