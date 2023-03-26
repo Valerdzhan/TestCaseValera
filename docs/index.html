@@ -18,20 +18,7 @@
 						var t = new a.YMap(document.getElementById("map_pl"), {
 							location: { center: [37.588215, 55.74], zoom: 11 },
 						})
-						t.addChild(new a.YMapDefaultSchemeLayer()),
-							t.addChild(new a.YMapDefaultFeaturesLayer()),
-							t.addChild(
-								new a.YMapControls({ position: "right" })
-									.addChild(new e.YMapZoomControl())
-									.addChild(new e.YMapGeolocationControl())
-							),
-							t.addChild(
-								new o.YMapDefaultMarker({
-									coordinates: [
-										37.58821507608095, 55.7339375178253,
-									],
-								})
-							)
+						
 					})
 				}
 			})()
