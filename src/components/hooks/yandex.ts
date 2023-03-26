@@ -2,7 +2,7 @@ import { YandexType } from "@/types/yandexType"
 import type { LngLat } from "@yandex/ymaps3-types"
 
 export default function useYandex(options: YandexType) {
-	const { el, coordinate, zoom } = options
+	const { el, coordinate, zoom, markerCoordinate } = options
 
 	const init = async () =>
 		new Promise((resolve) => {
@@ -17,7 +17,7 @@ export default function useYandex(options: YandexType) {
 			document.body.appendChild(script)
 		})
 
-	const setYMap = async () => {
+	const initYandexMap = async () => {
 		await init()
 		await ymaps3.ready
 		const { YMapZoomControl, YMapGeolocationControl } = await ymaps3.import(
@@ -43,10 +43,10 @@ export default function useYandex(options: YandexType) {
 			),
 			map.addChild(
 				new YMapDefaultMarker({
-					coordinates: coordinate as LngLat,
+					coordinates: markerCoordinate as LngLat,
 				})
 			)
 	}
 
-	return { setYMap }
+	return { initYandexMap }
 }

@@ -16,13 +16,14 @@ export default defineComponent({
 		const init = async () => {
 			const options: YandexType = {
 				el: yamaps.value,
-				coordinate: [66.084539, 76.680956],
-				zoom: 12,
+				coordinate: [66.08869000789291, 76.67697540222169],
+				zoom: 13,
+				markerCoordinate: [66.08869000789291, 76.67697540222169],
 			}
 
-			const { setYMap } = useYandex(options)
+			const { initYandexMap } = useYandex(options)
 
-			await setYMap()
+			await initYandexMap()
 		}
 
 		onMounted(init)

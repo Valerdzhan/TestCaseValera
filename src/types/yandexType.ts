@@ -3,4 +3,5 @@ export interface YandexType {
 	el: refType
 	coordinate: Array<number>
 	zoom: number
+	markerCoordinate?: Array<number>
 }
