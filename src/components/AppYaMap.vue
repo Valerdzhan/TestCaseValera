@@ -19,6 +19,7 @@ export default defineComponent({
 				coordinate: [66.084539, 76.680956],
 				zoom: 12,
 			}
+
 			const { setYMap } = useYandex(options)
 
 			await setYMap()
