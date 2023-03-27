@@ -1,7 +1,7 @@
 <template>
 	<header class="shadow-md">
 		<nav
-			class="h-[50px] flex justify-between items-center px-6 py-2 bg-gray-800 text-white"
+			class="h-[50px] flex justify-between items-center px-4 py-2 bg-gray-800 text-white"
 		>
 			<div class="font-bold">Тестовое задание</div>
 			<ul class="flex flex-row space-x-2">
